@@ -14,6 +14,12 @@ public class TicTacToeController implements ActionListener{
         this.view.setActionListener(this);
     }
 
+    public void resetEntireGame() {
+        model.resetGame();
+        view.resetBoard();
+        view.updateBoard(model.getBoard());
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton[][] buttons = view.getButtons();
@@ -27,11 +33,11 @@ public class TicTacToeController implements ActionListener{
                     ((JButton)e.getSource()).setEnabled(false);                    
 
                     if (model.checkWinner()) {
-                        JOptionPane.showMessageDialog(null, "Game Over! " + model.getCurrentPlayer() + " won.");
-                        model.resetGame();
+                        JOptionPane.showMessageDialog(null, "Game Over! Player " +  model.getCurrentPlayer() + " has won.");
+                        resetEntireGame();
                     } else if (model.isDraw()) { 
                         JOptionPane.showMessageDialog(null, "It's a draw!");
-                        model.resetGame();
+                        resetEntireGame();
                     } else {
                         model.playerTurn();
                     }
