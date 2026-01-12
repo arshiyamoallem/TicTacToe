@@ -49,7 +49,7 @@ javac src/*.java
 
 - **Step 3**: Run the game
 ```
-- java -cp src Main
+java -cp src Main
 ```
 
 ### IDE (VS Code, IntelliJ, Eclipse)
